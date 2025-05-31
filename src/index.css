@@ -1,0 +1,316 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    :root {
+      /* Base Palette */
+      --royal-purple: 279 100% 33%; /* #6A0DAD */
+      --crimson-red: 353 70% 50%;  /* #D72638 */
+      --midnight-blue: 216 63% 16%; /* #102542 */
+      --soft-lavender: 270 43% 71%; /* #B497D6 */
+      --glacial-blue: 199 78% 63%;  /* #5BC0EB */
+      --dark-red: 340 63% 33%;    /* #8B1E3F */
+      --smoke-purple: 303 15% 20%; /* #3D2C3C */
+      --white: 0 0% 100%; /* White */
+      
+      /* Light Mode Semantic Colors (Dark Background by default) */
+      --background: var(--midnight-blue); 
+      --foreground: var(--white); /* Default text color to white */
+      
+      --card: var(--soft-lavender); 
+      --card-foreground: var(--midnight-blue); 
+      
+      --popover: var(--soft-lavender);
+      --popover-foreground: var(--midnight-blue);
+      
+      --primary: var(--royal-purple); 
+      --primary-foreground: var(--white);
+      
+      --secondary: var(--glacial-blue); 
+      --secondary-foreground: var(--midnight-blue); 
+      
+      --muted: 270 43% 85%; 
+      --muted-foreground: 270 20% 50%; 
+      
+      --accent: var(--crimson-red); 
+      --accent-foreground: var(--white);
+      
+      --destructive: var(--dark-red); 
+      --destructive-foreground: var(--white);
+      
+      --border: var(--dark-red); 
+      --input: 270 43% 80%; 
+      --ring: var(--glacial-blue); 
+      
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      /* Dark Mode Semantic Colors */
+      --background: var(--midnight-blue);
+      --foreground: var(--white); /* Default text color to white */
+      
+      --card: var(--smoke-purple); /* Darker card for dark mode */
+      --card-foreground: var(--white); /* Lighter text for dark cards - changed to white */
+      
+      --popover: var(--smoke-purple);
+      --popover-foreground: var(--white); /* Changed to white */
+      
+      --primary: var(--royal-purple); 
+      --primary-foreground: var(--white);
+      
+      --secondary: var(--glacial-blue); 
+      --secondary-foreground: var(--midnight-blue); /* Keep this for contrast on glacial-blue backgrounds */
+      
+      --muted: 303 15% 25%; 
+      --muted-foreground: 270 20% 75%; /* Lighter muted foreground - adjusted for white text */
+      
+      --accent: var(--crimson-red); 
+      --accent-foreground: var(--white);
+      
+      --destructive: var(--dark-red); 
+      --destructive-foreground: var(--white);
+      
+      --border: var(--soft-lavender); /* Lighter border for dark mode */
+      --input: 303 15% 25%; 
+      --ring: var(--glacial-blue);
+    }
+
+    body {
+  color: white;
+      @apply bg-background text-foreground;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Apply white text color to common text elements globally */
+    body, p, span, div, label, legend, li, dt, dd {
+        color: hsl(var(--white)) !important;
+    }
+    
+    /* Headings should also be white */
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-bold;
+      color: hsl(var(--white)) !important;
+    }
+    
+    /* Specific components that might override text color, ensure they are white */
+    .card-foreground, 
+    .popover-foreground, 
+    .primary-foreground,
+    .accent-foreground,
+    .destructive-foreground {
+      color: hsl(var(--white)) !important;
+    }
+
+    .secondary-foreground { /* This might need to be dark on light backgrounds */
+      color: hsl(var(--midnight-blue)) !important;
+    }
+    .dark .secondary-foreground {
+      color: hsl(var(--midnight-blue)) !important;
+    }
+    
+    .muted-foreground {
+       color: hsl(var(--muted-foreground)) !important;
+    }
+    .dark .muted-foreground {
+        color: hsla(var(--white), 0.7) !important; /* Lighter for dark mode if needed */
+    }
+
+    .glassmorphism {
+      background: hsla(var(--soft-lavender) / 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid hsla(var(--soft-lavender) / 0.2);
+    }
+
+    .dark .glassmorphism {
+      background: hsla(var(--smoke-purple) / 0.2); 
+      border: 1px solid hsla(var(--soft-lavender) / 0.1); 
+    }
+
+    .btn-primary-hover:hover {
+      background-color: hsl(var(--crimson-red));
+      box-shadow: 0 0 10px hsl(var(--glacial-blue));
+      color: hsl(var(--white)) !important;
+    }
+    
+    .card-repressor-profile {
+      background-color: hsl(var(--card)); 
+      border-color: hsl(var(--border)); 
+    }
+    .dark .card-repressor-profile {
+      background-color: hsl(var(--smoke-purple));
+      border-color: hsl(var(--soft-lavender));
+    }
+
+
+    .alert-critical {
+      background-color: hsl(var(--crimson-red));
+      color: hsl(var(--white)) !important;
+    }
+    .alert-warning {
+      background-color: hsl(var(--dark-red));
+      color: hsl(var(--white)) !important;
+    }
+    
+    /* Specific color classes if needed for contrast */
+    .text-primary { color: hsl(var(--primary)) !important; }
+    .dark .text-primary { color: hsl(var(--royal-purple)) !important; }
+    .text-accent { color: hsl(var(--accent)) !important; }
+    .dark .text-accent { color: hsl(var(--crimson-red)) !important; }
+    .text-soft-lavender { color: hsl(var(--soft-lavender)) !important; }
+    .dark .text-soft-lavender { color: hsl(var(--soft-lavender)) !important; }
+    .text-royal-purple { color: hsl(var(--royal-purple)) !important; }
+    .dark .text-royal-purple { color: hsl(var(--royal-purple)) !important; }
+    .text-glacial-blue { color: hsl(var(--glacial-blue)) !important; }
+    .dark .text-glacial-blue { color: hsl(var(--glacial-blue)) !important; }
+    .text-midnight-blue { color: hsl(var(--midnight-blue)) !important; }
+    .dark .text-midnight-blue {  color: hsl(var(--midnight-blue)) !important; }
+    .text-smoke-purple { color: hsl(var(--smoke-purple)) !important; }
+    .dark .text-smoke-purple { color: hsl(var(--smoke-purple)) !important; }
+    .text-white { color: hsl(var(--white)) !important; }
+    .dark .text-white { color: hsl(var(--white)) !important; }
+
+
+    /* Links */
+    a {
+      color: hsl(var(--glacial-blue)) !important; /* Ensure links are distinct */
+      @apply hover:underline;
+    }
+    .dark a {
+      color: hsl(var(--glacial-blue)) !important;
+      @apply hover:underline;
+    }
+
+    nav a, .dark nav a {
+        color: hsl(var(--white)) !important;
+    }
+    nav a:hover, .dark nav a:hover {
+        color: hsl(var(--glacial-blue)) !important;
+    }
+
+    footer span, footer p, .dark footer span, .dark footer p {
+        color: hsla(var(--white), 0.7) !important; /* Muted white for footer text */
+    }
+    footer a, .dark footer a {
+        color: hsl(var(--soft-lavender)) !important;
+    }
+    footer a:hover, .dark footer a:hover {
+        color: hsl(var(--glacial-blue)) !important;
+    }
+
+
+    .btn-primary-hover:hover,
+    .bg-royal-purple:hover,
+    .bg-crimson-red:hover {
+      color: hsl(var(--white)) !important;
+    }
+    
+    .dark .bg-midnight-blue {
+        background-color: hsl(var(--midnight-blue)) !important;
+    }
+    
+    .dark .border-dark-red {
+        border-color: hsl(var(--dark-red)) !important;
+    }
+    
+    .dark .hover\\:text-glacial-blue:hover {
+        color: hsl(var(--glacial-blue)) !important;
+    }
+    .dark .hover\\:text-white:hover {
+        color: hsl(var(--white)) !important;
+    }
+
+    .dark .hover-bg-royal-purple-50:hover {
+      background-color: hsla(var(--royal-purple), 0.5) !important;
+    }
+    .dark .focus-bg-royal-purple-50:focus {
+      background-color: hsla(var(--royal-purple), 0.5) !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: hsla(var(--white), 0.6) !important;
+    }
+    
+    .dark input::placeholder,
+    .dark textarea::placeholder {
+        color: hsla(var(--white), 0.6) !important;
+    }
+    
+    .placeholder-midnight-blue-70::placeholder {
+        color: hsla(var(--midnight-blue), 0.7) !important;
+    }
+    .dark .placeholder-soft-lavender-70::placeholder {
+        color: hsla(var(--white), 0.7) !important;
+    }
+    .placeholder-midnight-blue-60::placeholder {
+         color: hsla(var(--midnight-blue), 0.6) !important;
+    }
+    .dark .placeholder-soft-lavender-60::placeholder {
+        color: hsla(var(--white), 0.6) !important;
+    }
+
+    /* Ensure select trigger and item text is white in dark mode */
+    .dark .select-trigger-text,
+    .dark .select-item-text {
+        color: hsl(var(--white)) !important;
+    }
+    /* Ensure select trigger and item text is white or appropriately contrasted in light mode */
+    .select-trigger-text,
+    .select-item-text {
+        color: hsl(var(--white)) !important; /* Default to white, assumes dark bg */
+    }
+    
+    /* Specific override for SelectContent text in light mode if it's on a light popover */
+    .bg-popover.text-popover-foreground .select-item-text {
+        color: hsl(var(--popover-foreground)) !important; /* Use popover foreground for light mode popovers */
+    }
+     .dark .bg-popover.text-popover-foreground .select-item-text {
+        color: hsl(var(--white)) !important; /* Ensure it's white in dark mode */
+    }
+
+
+    input, textarea {
+        color: hsl(var(--white)) !important; /* Foreground for light mode (default dark bg) */
+    }
+    .dark input, .dark textarea {
+        color: hsl(var(--white)) !important; 
+        background-color: hsla(var(--smoke-purple), 0.3) !important;
+        border-color: hsla(var(--soft-lavender), 0.5) !important;
+    }
+
+    /* Card text elements in dark mode */
+    .dark .card-content-text,
+    .dark .card-description-text,
+    .dark .card-title-text {
+        color: hsl(var(--white)) !important;
+    }
+    
+    /* Ensure card text has contrast in light mode (assuming default dark background) */
+     .card-content-text, .card-description-text, .card-title-text {
+        color: hsl(var(--white)) !important;
+     }
+
+    /* Override CardTitle to be more specific if it's conflicting */
+    .card-title-text.text-royal-purple { color: hsl(var(--royal-purple)) !important; }
+    .dark .card-title-text.text-glacial-blue { color: hsl(var(--glacial-blue)) !important; }
+    .dark .card-title-text { color: hsl(var(--glacial-blue)) !important; }
+
+
+    .dark .badge-text-contrast {
+        color: hsl(var(--midnight-blue)) !important;
+    }
+    .dark .badge-text-light {
+        color: hsl(var(--soft-lavender)) !important;
+    }
+    
+    /* Ensure text within buttons is appropriately contrasted */
+    .button-text-primary { color: hsl(var(--primary-foreground)) !important; } /* For default buttons */
+    .button-text-secondary { color: hsl(var(--secondary-foreground)) !important; } /* For secondary buttons */
+    .button-text-destructive { color: hsl(var(--destructive-foreground)) !important; } /* For destructive */
+    .button-text-outline { color: hsl(var(--foreground)) !important; } /* For outline */
+    .dark .button-text-outline { color: hsl(var(--white)) !important; }
+    .button-text-ghost { color: hsl(var(--foreground)) !important; } /* For ghost */
+    .dark .button-text-ghost { color: hsl(var(--white)) !important; }
+    .button-text-link { color: hsl(var(--primary)) !important; } /* For link */
+    .dark .button-text-link { color: hsl(var(--glacial-blue)) !important; }
